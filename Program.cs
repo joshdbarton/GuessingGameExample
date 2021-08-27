@@ -19,9 +19,13 @@ namespace GuessingGame
                     Console.WriteLine("correct!");
                     break;
                 }
+                else if (secretNumber > input)
+                {
+                    Console.WriteLine("Too low!");
+                }
                 else
                 {
-                    Console.WriteLine("wrong");
+                    Console.WriteLine("too High!");
                 };
             }
         }
