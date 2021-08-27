@@ -6,12 +6,12 @@ namespace GuessingGame
     {
         static void Main(string[] args)
         {
-            int secretNumber = 42;
+            int secretNumber = new Random().Next(1, 101);
 
-            for (int i = 1; i < 5; i++)
+            for (int i = 4; i > 0; i--)
             {
                 Console.WriteLine("Guess the secret number!");
-                Console.Write($"Your Guess ({i}): ");
+                Console.Write($"Your Guess (Guesses Left: {i}): ");
                 var input = int.Parse(Console.ReadLine());
 
                 if (secretNumber == input)
