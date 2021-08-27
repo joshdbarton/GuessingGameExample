@@ -8,12 +8,12 @@ namespace GuessingGame
         {
             int secretNumber = 42;
 
-            Console.WriteLine("Guess the secret number!");
-            Console.Write("Your Guess: ");
-
-            try
+            for (int i = 1; i < 5; i++)
             {
+                Console.WriteLine("Guess the secret number!");
+                Console.Write("Your Guess: ");
                 var input = int.Parse(Console.ReadLine());
+
                 if (secretNumber == input)
                 {
                     Console.WriteLine("correct!");
@@ -23,12 +23,6 @@ namespace GuessingGame
                     Console.WriteLine("wrong");
                 };
             }
-            catch
-            {
-                Console.WriteLine("Integers only please!");
-
-            }
-
         }
     }
 }
