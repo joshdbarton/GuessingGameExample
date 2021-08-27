@@ -7,33 +7,56 @@ namespace GuessingGame
         static void Main(string[] args)
         {
 
-            Console.WriteLine("difficulty level? 1 -easy, 2 - medium, 3 -hard");
+            Console.WriteLine("difficulty level? 1 -easy, 2 - medium, 3 -hard, 4 - cheater");
             var difficulty = int.Parse(Console.ReadLine());
 
             int secretNumber = new Random().Next(1, 101);
-
-            //represents number of tries by difficult level
-            var difficultiesTries = new int[] { 8, 6, 4 };
-
-            for (int i = difficultiesTries[difficulty - 1]; i > 0; i--)
+            if (difficulty == 4)
             {
-                Console.WriteLine("Guess the secret number!");
-                Console.Write($"Your Guess (Guesses Left: {i}): ");
-                var input = int.Parse(Console.ReadLine());
+                while (true)
+                {
+                    Console.WriteLine("Guess the secret number!");
+                    Console.Write("Your Guess (Guesses Left: INFINITE!): ");
+                    var input = int.Parse(Console.ReadLine());
 
-                if (secretNumber == input)
-                {
-                    Console.WriteLine("correct!");
-                    break;
+                    if (secretNumber == input)
+                    {
+                        Console.WriteLine("correct!");
+                        break;
+                    }
+                    else if (secretNumber > input)
+                    {
+                        Console.WriteLine("Too low!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("too High!");
+                    };
                 }
-                else if (secretNumber > input)
+            }
+            else
+            {
+                for (int i = new int[] { 8, 6, 4 }[difficulty - 1]; i > 0; i--)
                 {
-                    Console.WriteLine("Too low!");
+                    Console.WriteLine("Guess the secret number!");
+                    Console.Write($"Your Guess (Guesses Left: {i}): ");
+                    var input = int.Parse(Console.ReadLine());
+
+                    if (secretNumber == input)
+                    {
+                        Console.WriteLine("correct!");
+                        break;
+                    }
+                    else if (secretNumber > input)
+                    {
+                        Console.WriteLine("Too low!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("too High!");
+                    };
                 }
-                else
-                {
-                    Console.WriteLine("too High!");
-                };
+
             }
         }
     }
