@@ -9,55 +9,33 @@ namespace GuessingGame
 
             Console.WriteLine("difficulty level? 1 -easy, 2 - medium, 3 -hard, 4 - cheater");
             var difficulty = int.Parse(Console.ReadLine());
+            int i = new int[] { 8, 6, 4, 1}[difficulty - 1];
 
             int secretNumber = new Random().Next(1, 101);
-            if (difficulty == 4)
+            
+            while (difficulty == 4 || i > 0)
             {
-                while (true)
+                string guessesLeft = difficulty == 4 ? "INFINITE!" : i.ToString();
+                Console.WriteLine("Guess the secret number!");
+                Console.Write($"Your Guess (Guesses Left: {guessesLeft}): ");
+                var input = int.Parse(Console.ReadLine());
+
+                if (secretNumber == input)
                 {
-                    Console.WriteLine("Guess the secret number!");
-                    Console.Write("Your Guess (Guesses Left: INFINITE!): ");
-                    var input = int.Parse(Console.ReadLine());
-
-                    if (secretNumber == input)
-                    {
-                        Console.WriteLine("correct!");
-                        break;
-                    }
-                    else if (secretNumber > input)
-                    {
-                        Console.WriteLine("Too low!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("too High!");
-                    };
+                    Console.WriteLine("correct!");
+                    break;
                 }
-            }
-            else
-            {
-                for (int i = new int[] { 8, 6, 4 }[difficulty - 1]; i > 0; i--)
+                else if (secretNumber > input)
                 {
-                    Console.WriteLine("Guess the secret number!");
-                    Console.Write($"Your Guess (Guesses Left: {i}): ");
-                    var input = int.Parse(Console.ReadLine());
-
-                    if (secretNumber == input)
-                    {
-                        Console.WriteLine("correct!");
-                        break;
-                    }
-                    else if (secretNumber > input)
-                    {
-                        Console.WriteLine("Too low!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("too High!");
-                    };
+                    Console.WriteLine("Too low!");
                 }
-
+                else
+                {
+                    Console.WriteLine("too High!");
+                };
+                i--;
             }
+           
         }
     }
 }
